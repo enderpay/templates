@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{% block title %} Login {% endblock title %}
+{% block content %}
+  <div class="card my-3 shadow">
+    <div class="card-header bg-primary text-light">
+      Login
+    </div>
+    <div class="card-body">
+      <form action="" method="POST">
+        <label for="input-name" class="m-0">Username <a class="text-danger">*</a></label>
+        <div class="row">
+          <div class="col-md-9">
+              <input class="form-control" name="username" id="input-username" type="text" placeholder="Username" minlength="3" maxlength="16" pattern="[a-zA-Z0-9_]{3,16}" required>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" name="login" class="btn btn-primary container-fluid">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock content %}
