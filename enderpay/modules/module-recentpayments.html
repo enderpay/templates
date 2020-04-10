@@ -1,0 +1,25 @@
+<div class="card mt-3 shadow">
+  <div class="card-header bg-primary text-light">
+    {{ module.name }}
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 5%"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for payment in module.data %}
+        <tr>
+          <td class="align-middle"><img class="ml-2 rounded border d-block" width="32px" src="https://cravatar.eu/avatar/{{ payment.username }}/32.png"></td>
+          <td class="align-middle">{{ payment.username }}<br><small>{{ payment.timeago }}</small></td>
+          <td>{{ store.currency.symbol }} {{ payment.paid|number_format(2) }} {{ store.currency.code }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
