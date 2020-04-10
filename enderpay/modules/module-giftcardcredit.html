@@ -1,0 +1,16 @@
+<div class="card mt-3 shadow" id="module-giftcardcredit">
+  <div class="card-header bg-primary text-light">
+    {{ module.name }}
+  </div>
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input class="form-control" id="giftcard-code" type="text" placeholder="Code" minlength="1" required>
+      <input type="hidden" id="giftcard-store_id" value="{{ store.id }}">
+      <div class="input-group-append">
+        <button id="giftcard-submit" class="btn btn-primary container-fluid">Check</button>
+      </div>
+    </div>
+    <div id="giftcard-alert">
+    </div>
+  </div>
+</div>
