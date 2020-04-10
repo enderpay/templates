@@ -1,0 +1,13 @@
+<div class="card my-3 shadow">
+  <div class="card-header bg-primary text-light">
+    {{ variable.name }}
+  </div>
+  <div class="card-body">
+      {{ variable.content|raw }}
+      <select name="variables[{{ variable.id }}]" id="input-theme" class="custom-select" required>
+        {% for option in variable.options %}
+          <option value="{{ option.value }}">{{ option.name }} ({{ cart.currency.symbol }}{{ option.price|number_format(2) }} {{ cart.currency.code }})</option>
+        {% endfor %}
+      </select>
+  </div>
+</div>
