@@ -1,0 +1,81 @@
+{% extends "base.html.twig" %}
+{% block title %} Cart {% endblock title %}
+{% block content %}
+<form action="" method="POST">
+  <div class="card my-3 shadow">
+    <div class="card-header bg-primary text-light">
+      Cart {% if cart.coupons %} (Coupons: {{ cart.coupons|length }}) {% endif %} {% if cart.giftcards %} (Giftcards: {{ cart.giftcards|length }}) {% endif %}
+    </div>
+    <div class="card-body">
+      {% if cart.packages %}
+      <table class="table table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 50%" class="pb-0">Package Details:</th>
+            <th scope="col" style="width: 35%" class="pb-0">Quantity:</th>
+            <th scope="col" style="width: 15%" class="pb-0"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for package in cart.packages %}
+          <form action="" method="POST">
+            <tr>
+              <th scope="row">
+                {{ package.name }}
+                <div>
+                  <small>
+                    <a class="text-danger">SUBTOTAL:</a>
+                    {{ cart.currency.symbol }}{{ (package.price * package.quantity)|number_format(2) }} {% if package.price != package.original_price %} <del class="text-danger">{{ package.original_price|number_format(2) }}</del> {% endif %}{{ cart.currency.code }} {% if package.variables %} // {{ package.variables|length }} Variables {% endif %}
+                  </small>
+                </div>
+              </th>
+              <td>
+                <div class="input-group">
+                  <input type="hidden" name="package" value="{{ package.id }}">
+                  <input type="number" class="form-control" min="1" max="100" value="{{ package.quantity }}" name="quantity" {% if not package.updateable %}disabled{% endif %}>
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary container-fluid" name="update_quantity" {% if not package.updateable %}disabled{% endif %}>Update</button>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger container-fluid" type="submit" name="remove">Remove</button>
+              </td>
+            </tr>
+          </form>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-lg-6 form-group">
+          <label class="m-0">Gift-Card (optional)</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-primary container-fluid" name="apply-giftcard">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 form-group">
+          <label class="m-0">Coupon (optional)</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="coupon" placeholder="Enter a valid coupon code.">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-primary container-fluid" name="apply-coupon">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mb-0">SUBTOTAL: {{ cart.currency.symbol }}{{ cart.sub_total|number_format(2) }} {{ cart.currency.code }}</p>
+      <p class="mb-0">GRAND TOTAL: {{ cart.currency.symbol }}{{ cart.grand_total|number_format(2) }} {{ cart.currency.code }}</p>
+      {% else %}
+      <p>Your cart is currently empty.</p>
+      {% endif %}
+    </div>
+    <div class="card-footer">
+      <a href="/cart/checkout"><button class="btn btn-success" type="button">Proceed to checkout ({{ cart.currency.symbol }}{{ cart.grand_total|number_format(2) }} {{ cart.currency.code }})</button></a>
+      <button class="btn btn-danger" type="submit" name="clear">Clear cart</button>
+    </div>
+  </div>
+</form>
+{% endblock content %}
