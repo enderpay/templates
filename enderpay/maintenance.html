@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The official donation website for {{ store.name }}.">
+    <meta name="author" content="">
+    <title>{{ store.name }} » Maintenance</title>
+
+    {% if store.favicon_url %}<link rel="shortcut icon" type="image" href="{{ store.favicon_url }}"/>{% endif %}
+    <link rel="stylesheet" href="https://cdn.enderpay.com/bootstrap/themes/default.min.css">
+    <link rel="stylesheet" href="{{ store.theme_url }}">
+  </head>
+
+  <body>
+
+    <!-- container -->
+    <div class="container my-2">
+
+      <!-- content -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <h1>Maintenance Mode</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- javascript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft 2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/js/enderpay_v=1.js"></script>
+  </body>
+</html>
