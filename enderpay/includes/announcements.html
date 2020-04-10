@@ -1,0 +1,6 @@
+{% for announcement in store.announcements %}
+<div class="alert alert-dismissible alert-{{ announcement.type }} mt-3 shadow">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <p class="mb-0">{{ announcement.content }}</p>
+</div>
+{% endfor %}
