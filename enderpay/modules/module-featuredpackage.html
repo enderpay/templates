@@ -1,0 +1,39 @@
+<div class="card mt-3 shadow" id="module-featuredpackage">
+  <div class="card-header bg-primary text-light">
+    {{ module.name }}
+  </div>
+  <div class="card-body text-center">
+    <img class="center-block" src="{{ module.data.image_url }}" alt="{{ module.name }}">
+  </div>
+  <div class="card-footer p-2">
+    <p class="mb-1 text-center">
+      {{ module.data.name }} ({{ cart.currency.symbol ?? store.currency.symbol }}{{ module.data.price|number_format(2) }}
+      {% if module.data.original_price != module.data.price %}<del class="text-danger">{{ module.data.original_price|number_format(2) }}</del>{% endif %}
+      {{ cart.currency.code ?? store.currency.code }})
+    </p>
+    <p class="mb-1 text-center">{{ module.package.name }}</p>
+    <button type="button" class="btn btn-secondary btn-sm container-fluid" data-toggle="modal" data-target="#m_package{{ module.featuredpackage.id }}">Info</button>
+  </div>
+</div>
+
+<!-- Modal start -->
+<div class="modal fade" id="m_package{{ module.featuredpackage.id }}" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ module.data.name }} <small>({{ cart.currency.symbol ?? store.currency.symbol }}{{ module.data.price|number_format(2) }} {% if module.data.original_price != module.data.price %} <del class="text-danger">{{ module.data.original_price|number_format(2) }}</del> {% endif %} {{ cart.currency.code ?? store.currency.code }})</small></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ module.data.content|raw }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="/package/{{ module.featuredpackage.id }}"><button type="button" class="btn btn-primary">Add to cart</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal end -->
