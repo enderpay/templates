@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The official donation website for {{ store.name }}.">
+    <meta name="author" content="">
+    <title>{{ store.name }} » {% block title %}{% endblock %}</title>
+
+    {% if store.favicon_url %}<link rel="shortcut icon" type="image" href="{{ store.favicon_url }}"/>{% endif %}
+    <link rel="stylesheet" href="https://cdn.enderpay.com/bootstrap/themes/default.min.css">
+    <link rel="stylesheet" href="{{ store.theme_url }}">
+  </head>
+
+  <body{% if store.background_url %} style="background-image: url('{{ store.background_url }}'); background-repeat: no-repeat; background-attachment: fixed;"{% endif %}>
+
+    <!-- container -->
+    <div class="container my-2">
+
+      <!-- header -->
+      {% include 'header.html.twig' %}
+
+      <!-- navigation bar -->
+      {% include 'navbar.html.twig' %}
+
+      <!-- content -->
+      <div class="row">
+        <div class="{% if store.modules %}col-lg-8 col-xs-8{% else %}col-lg-12 col-xs-12{% endif%}">
+
+          <!-- content/announcements -->
+          {% include 'announcements.html.twig' %}
+
+          <!-- content/notification -->
+          {% include 'notifications.html.twig' %}
+
+          <!-- content/page -->
+          {% block content %} {% endblock %}
+
+          <!-- footer -->
+          {% include 'footer.html.twig' %}
+
+        </div>
+
+        {% if store.modules %}
+        <div class="col-lg-4 col-xs-4">
+          {% for module in store.modules %}
+            {% if 'CUSTOMTEXT' in module.type %}
+              {% include 'module-customtext.html' %}
+            {% endif %}
+            {% if 'YOUTUBEVIDEO' in module.type %}
+              {% include 'module-youtubevideo.html' %}
+            {% endif %}
+            {% if 'FEATUREDPACKAGE' in module.type %}
+              {% include 'module-featuredpackage.html' %}
+            {% endif %}
+            {% if 'FEATUREDPLAYER' in module.type %}
+              {% include 'module-featuredplayer.html' %}
+            {% endif %}
+            {% if 'RECENTLOGINS' in module.type %}
+              {% include 'module-recentlogins.html' %}
+            {% endif %}
+            {% if 'RECENTPAYMENTS' in module.type %}
+              {% include 'module-recentpayments.html' %}
+            {% endif %}
+            {% if 'GIFTCARDCREDIT' in module.type %}
+              {% include 'module-giftcardcredit.html' %}
+            {% endif %}
+            {% if 'SERVERSTATUS' in module.type %}
+              {% include 'module-serverstatus.html' %}
+            {% endif %}
+            {% if 'TOPDONATOR' in module.type %}
+              {% include 'module-topdonator.html' %}
+            {% endif %}
+            {% if 'DONATIONGOAL' in module.type %}
+              {% include 'module-donationgoal.html' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <!-- javascript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/assets/js/enderpay_v=1.js"></script>
+  </body>
+</html>
