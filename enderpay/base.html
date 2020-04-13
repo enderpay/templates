@@ -19,26 +19,26 @@
     <div class="container my-2">
 
       <!-- header -->
-      {% include 'header.html.twig' %}
+      {% include 'header.html' %}
 
       <!-- navigation bar -->
-      {% include 'navbar.html.twig' %}
+      {% include 'navbar.html' %}
 
       <!-- content -->
       <div class="row">
         <div class="{% if store.modules %}col-lg-8 col-xs-8{% else %}col-lg-12 col-xs-12{% endif%}">
 
           <!-- content/announcements -->
-          {% include 'announcements.html.twig' %}
+          {% include 'announcements.html' %}
 
           <!-- content/notification -->
-          {% include 'notifications.html.twig' %}
+          {% include 'notifications.html' %}
 
           <!-- content/page -->
           {% block content %} {% endblock %}
 
           <!-- footer -->
-          {% include 'footer.html.twig' %}
+          {% include 'footer.html' %}
 
         </div>
 

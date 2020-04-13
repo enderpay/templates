@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "base.html" %}
 {% block title %} {{ package.name }} {% endblock title %}
 {% block content %}
 <form action="" method="POST">
@@ -9,13 +9,13 @@
     <div class="card-body">
       {% for variable in package.variables %}
         {% if 'STRING' in variable.type %}
-          {% include 'variable-string.html.twig' %}
+          {% include 'variable-string.html' %}
         {% endif %}
         {% if 'NUMBER' in variable.type %}
-          {% include 'variable-number.html.twig' %}
+          {% include 'variable-number.html' %}
         {% endif %}
         {% if 'OPTIONS' in variable.type %}
-          {% include 'variable-options.html.twig' %}
+          {% include 'variable-options.html' %}
         {% endif %}
       {% endfor %}
     </div>
