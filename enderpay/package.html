@@ -8,13 +8,13 @@
     </div>
     <div class="card-body">
       {% for variable in package.variables %}
-        {% if 'STRING' in variable.type %}
+        {% variable.type == 'STRING' %}
           {% include 'variable-string.html' %}
         {% endif %}
-        {% if 'NUMBER' in variable.type %}
+        {% if variable.type == 'NUMBER' %}
           {% include 'variable-number.html' %}
         {% endif %}
-        {% if 'OPTIONS' in variable.type %}
+        {% if variable.type == 'OPTIONS'%}
           {% include 'variable-options.html' %}
         {% endif %}
       {% endfor %}
