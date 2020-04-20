@@ -31,10 +31,9 @@
               </th>
               <td>
                 <div class="input-group">
-                  <input type="hidden" name="package" value="{{ package.id }}">
                   <input type="number" class="form-control" min="1" max="100" value="{{ package.quantity }}" name="quantity" {% if not package.updateable %}disabled{% endif %}>
                   <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary container-fluid" name="update_quantity" {% if not package.updateable %}disabled{% endif %}>Update</button>
+                    <button type="submit" class="btn btn-primary container-fluid" name="package" value="{{ package.id }}" {% if not package.updateable %}disabled{% endif %}>Update</button>
                   </div>
                 </div>
               </td>
@@ -52,7 +51,7 @@
           <div class="input-group">
             <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
             <div class="input-group-append">
-              <button type="submit" class="btn btn-primary container-fluid" name="apply-giftcard">Apply</button>
+              <button type="submit" class="btn btn-primary container-fluid">Apply</button>
             </div>
           </div>
         </div>
@@ -61,7 +60,7 @@
           <div class="input-group">
             <input type="text" class="form-control" name="coupon" placeholder="Enter a valid coupon code.">
             <div class="input-group-append">
-              <button type="submit" class="btn btn-primary container-fluid" name="apply-coupon">Apply</button>
+              <button type="submit" class="btn btn-primary container-fluid">Apply</button>
             </div>
           </div>
         </div>
