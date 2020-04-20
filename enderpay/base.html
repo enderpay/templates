@@ -45,34 +45,34 @@
         {% if store.modules %}
         <div class="col-lg-4 col-xs-4">
           {% for module in store.modules %}
-            {% if 'CUSTOMTEXT' in module.type %}
+            {% if module.type == 'CUSTOMTEXT' %}
               {% include 'module-customtext.html' %}
             {% endif %}
-            {% if 'YOUTUBEVIDEO' in module.type %}
+            {% if module.type == 'YOUTUBEVIDEO' %}
               {% include 'module-youtubevideo.html' %}
             {% endif %}
-            {% if 'FEATUREDPACKAGE' in module.type %}
+            {% if module.type == 'FEATUREDPACKAGE' %}
               {% include 'module-featuredpackage.html' %}
             {% endif %}
-            {% if 'FEATUREDPLAYER' in module.type %}
+            {% if module.type == 'FEATUREDPLAYER' %}
               {% include 'module-featuredplayer.html' %}
             {% endif %}
-            {% if 'RECENTLOGINS' in module.type %}
+            {% if module.type == 'RECENTLOGINS'%}
               {% include 'module-recentlogins.html' %}
             {% endif %}
-            {% if 'RECENTPAYMENTS' in module.type %}
+            {% if module.type == 'RECENTPAYMENTS' %}
               {% include 'module-recentpayments.html' %}
             {% endif %}
-            {% if 'GIFTCARDCREDIT' in module.type %}
+            {% if module.type == 'GIFTCARDCREDIT' %}
               {% include 'module-giftcardcredit.html' %}
             {% endif %}
-            {% if 'SERVERSTATUS' in module.type %}
+            {% if module.type == 'SERVERSTATUS'  %}
               {% include 'module-serverstatus.html' %}
             {% endif %}
-            {% if 'TOPDONATOR' in module.type %}
+            {% if module.type == 'TOPDONATOR' %}
               {% include 'module-topdonator.html' %}
             {% endif %}
-            {% if 'DONATIONGOAL' in module.type %}
+            {% if module.type == 'DONATIONGOAL' %}
               {% include 'module-donationgoal.html' %}
             {% endif %}
           {% endfor %}
