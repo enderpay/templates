@@ -4,17 +4,17 @@
 <form action="" method="POST">
   <div class="card my-3 shadow">
     <div class="card-header bg-primary text-light">
-      {{ package.name }} » Variables
+      {{ package.name }}
     </div>
     <div class="card-body">
       {% for variable in package.variables %}
-        {% variable.type == 'STRING' %}
+        {% if variable.type == 'STRING' %}
           {% include 'variable-string.html' %}
         {% endif %}
         {% if variable.type == 'NUMBER' %}
           {% include 'variable-number.html' %}
         {% endif %}
-        {% if variable.type == 'OPTIONS'%}
+        {% if variable.type == 'OPTIONS' %}
           {% include 'variable-options.html' %}
         {% endif %}
       {% endfor %}

@@ -28,7 +28,7 @@
   </div>
   <div class="card-body">
     {{ category.content | raw }}
-    {% if 'GRID' in category.view_mode %}
+    {% if category.view_mode == 'GRID' %}
     <div class="row row-cols-1 row-cols-md-3">
       {% for package in packages %}
       <div class="col mb-4">
@@ -48,7 +48,7 @@
       {% endfor %}
     </div>
     {% endif %}
-    {% if 'LIST' in category.view_mode %}
+    {% if category.view_mode == 'LIST' %}
     <table class="table table-borderless table-striped table-hover thead-dark">
       <tbody>
         {% for package in packages %}
