@@ -19,6 +19,7 @@
         <tbody>
           {% for package in cart.packages %}
           <form action="" method="POST">
+            <input type="hidden" name="package" value="{{ package.id }}">
             <tr>
               <th scope="row">
                 {{ package.name }}
@@ -33,7 +34,7 @@
                 <div class="input-group">
                   <input type="number" class="form-control" min="1" max="100" value="{{ package.quantity }}" name="quantity" {% if not package.updateable %}disabled{% endif %}>
                   <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary container-fluid" name="package" value="{{ package.id }}" {% if not package.updateable %}disabled{% endif %}>Update</button>
+                    <button type="submit" class="btn btn-primary container-fluid" {% if not package.updateable %}disabled{% endif %}>Update</button>
                   </div>
                 </div>
               </td>
