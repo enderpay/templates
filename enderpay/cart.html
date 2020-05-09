@@ -47,22 +47,26 @@
       </table>
       <div class="row">
         <div class="col-lg-6 form-group">
-          <label class="m-0">Gift-Card (optional)</label>
-          <div class="input-group">
-            <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-primary container-fluid">Apply</button>
+          <form action="" method="POST">
+            <label class="m-0">Gift-Card (optional)</label>
+            <div class="input-group">
+                <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
+                <div class="input-group-append">
+                  <button type="submit" class="btn btn-primary container-fluid">Apply</button>
+                </div>
             </div>
-          </div>
+          </form>
         </div>
         <div class="col-lg-6 form-group">
-          <label class="m-0">Coupon (optional)</label>
-          <div class="input-group">
-            <input type="text" class="form-control" name="coupon" placeholder="Enter a valid coupon code.">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-primary container-fluid">Apply</button>
+          <form action="" method="POST">
+            <label class="m-0">Coupon (optional)</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="coupon" placeholder="Enter a valid coupon code.">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary container-fluid">Apply</button>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <p class="mb-0">SUBTOTAL: {{ cart.currency.symbol }}{{ cart.sub_total|number_format(2) }} {{ cart.currency.code }}</p>
