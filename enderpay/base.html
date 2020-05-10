@@ -11,6 +11,8 @@
     {% if store.favicon_url %}<link rel="shortcut icon" type="image" href="{{ store.favicon_url }}"/>{% endif %}
     <link rel="stylesheet" href="https://cdn.enderpay.com/bootstrap/themes/default.min.css">
     <link rel="stylesheet" href="{{ store.theme_url }}">
+
+    {{ store.g_analytics | raw }}
   </head>
 
   <body{% if store.background_url %} style="background-image: url('{{ store.background_url }}'); background-repeat: no-repeat; background-attachment: fixed;"{% endif %}>
