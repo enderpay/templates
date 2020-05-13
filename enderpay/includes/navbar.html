@@ -22,11 +22,11 @@
         {% endif %}
 
       {% endfor %}
-      {% if store.custompages %}
+      {% if store.custom_pages %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="/category/{{ category.slug }}/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Pages</a>
         <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
-          {% for page in store.custompages %}
+          {% for page in store.custom_pages %}
           <a class="dropdown-item" href="/page/{{ page.slug }}">{{ page.name }}</a>
           {% endfor %}
         </div>
