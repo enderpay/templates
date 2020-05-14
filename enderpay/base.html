@@ -15,7 +15,7 @@
     {{ store.g_analytics | raw }}
   </head>
 
-  <body>{% if store.background_url %} style="background-image: url('{{ store.background_url }}'); background-repeat: no-repeat; background-attachment: fixed;"{% endif %}>
+  <body{% if store.background_url %} style="background-image: url('{{ store.background_url }}'); background-repeat: no-repeat; background-attachment: fixed;"{% endif %}>
 
     <!-- container -->
     <div class="container my-2">
