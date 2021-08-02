@@ -1,0 +1,72 @@
+{% extends "base.twig.html" %}
+{% block title %} Cart {% endblock title %}
+{% block content %}
+<form action="" method="POST">
+    <input name="_token" value="{{ store.csrfToken }}" type="hidden">
+    <div class="card my-3 shadow">
+        <div class="card-header bg-primary text-light">
+            Cart {% if cart.giftcards is not empty %} (Giftcards: {{ cart.giftcards|length }}) {% endif %}
+        </div>
+        <div class="card-body">
+            {% if cart.packages is not empty %}
+            <table class="table table-borderless table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" style="width: 50%" class="pb-0">Package Details:</th>
+                    <th scope="col" style="width: 35%" class="pb-0">Quantity:</th>
+                    <th scope="col" style="width: 15%" class="pb-0"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for unique,package in cart.packages %}
+                <form action="" method="POST">
+                    <input name="_token" value="{{ store.csrfToken }}" type="hidden">
+                    <input type="hidden" name="package" value={{ unique }}>
+                    <tr>
+                        <th scope="row">
+                            {{ package.name }}
+                            <div>
+                                <small>
+                                    <a class="text-danger">SUBTOTAL:</a>
+                                    {{ cart.currency.symbol }}{{ package.subtotal }} {{ cart.currency.iso4217 }} {% if package.variableCount > 0 %} // {{ package.variableCount }} Variables {% endif %}
+                                </small>
+                            </div>
+                        </th>
+                        <td>
+                            <div class="input-group">
+                                <input type="number" class="form-control" min="1" max="100" value="{{ package.quantity }}" name="quantity">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary container-fluid">Update</button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger container-fluid" type="submit" name="remove">Remove</button>
+                        </td>
+                    </tr>
+                </form>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="" method="POST" class="form-group mb-3">
+                <input name="_token" value="{{ store.csrfToken }}" type="hidden">
+                <label class="m-0">Gift-Card (optional)</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary container-fluid">Apply</button>
+                    </div>
+                </div>
+            </form>
+            <p class="mb-0">GRAND TOTAL: {{ cart.currency.symbol }}{{ cart.grandTotal|number_format(2) }} {{ cart.currency.iso4217 }}</p>
+            {% else %}
+            <p>Your cart is currently empty.</p>
+            {% endif %}
+        </div>
+        <div class="card-footer">
+            <a href="/cart/checkout"><button class="btn btn-success" type="button">Proceed to checkout ({{ cart.currency.symbol }}{{ cart.grandTotal|number_format(2) }} {{ cart.currency.iso4217 }})</button></a>
+            <button class="btn btn-danger" type="submit" name="clear">Clear cart</button>
+        </div>
+    </div>
+</form>
+{% endblock content %}
