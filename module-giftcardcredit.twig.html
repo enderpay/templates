@@ -3,11 +3,11 @@
         {{ module.name }}
     </div>
     <div class="card-body">
-        <div class="input-group mb-3">
-            <input class="form-control" id="giftcard_code" type="text" placeholder="Code" minlength="1" required>
+        <div class="input-group">
             <input type="hidden" id="giftcard_store_id" value="{{ store.id }}">
-            <div class="input-group-text">
-                <button id="giftcard_submit" class="btn btn-primary container-fluid">Check</button>
+            <div class="input-group">
+                <input type="text" class="form-control" id="giftcard_code" placeholder="Code" minlength="1" required>
+                <button class="btn btn-primary" type="button" id="giftcard_submit">Check</button>
             </div>
         </div>
         <div id="giftcard_alert">

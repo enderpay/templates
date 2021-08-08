@@ -34,10 +34,8 @@
                         </th>
                         <td>
                             <div class="input-group">
-                                <input type="number" class="form-control" min="1" max="100" value="{{ package.quantity }}" name="quantity">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-primary container-fluid">Update</button>
-                                </div>
+                                <input type="text" class="form-control" placeholder="Quantity" min="1" max="100" value="{{ package.quantity }}" name="quantity">
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </td>
                         <td>
@@ -52,10 +50,8 @@
                 <input name="_token" value="{{ store.csrfToken }}" type="hidden">
                 <label class="m-0">Gift-Card (optional)</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" name="giftcard" placeholder="Enter a valid gift-card code.">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary container-fluid">Apply</button>
-                    </div>
+                    <input type="text" class="form-control" placeholder="Enter a valid gift-card code." name="giftcard">
+                    <button class="btn btn-primary" type="submit">Apply</button>
                 </div>
             </form>
             <p class="mb-0">GRAND TOTAL: {{ cart.currency.symbol }}{{ cart.grandTotal|number_format(2) }} {{ cart.currency.iso4217 }}</p>

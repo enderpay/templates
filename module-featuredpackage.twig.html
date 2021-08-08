@@ -4,17 +4,12 @@
     </div>
     {% if module.data.package.imageUrl %}
     <div class="card-body text-center">
-        <img class="center-block" src="{{ module.data.package.imageUrl }}" alt="{{ module.name }}" height="250px">
+        <img class="center-block" src="{{ module.data.package.imageUrl }}" alt="{{ module.name }}" height="150px" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ module.data.package.name }}">
     </div>
     {% endif %}
     <div class="card-footer p-2">
-        <p class="mb-1 text-center">
-            {{ module.data.package.name }} ({{ cart.currency.symbol ?? store.currency.symbol }}{{ module.data.package.price|number_format(2) }}
-            {% if module.data.package.originalPrice != module.data.package.price %}<del class="text-danger">{{ module.data.package.originalPrice|number_format(2) }}</del>{% endif %}
-            {{ cart.currency.iso4217 ?? store.currency.iso4217 }})
-        </p>
-        <p class="mb-1 text-center">{{ module.data.package.name }}</p>
-        <button type="button" class="btn btn-secondary btn-sm container-fluid" data-toggle="modal" data-target="#m_package{{ module.data.package.id }}">Info</button>
+        <a href="/package/{{ module.data.package.id }}"><button type="button" class="btn btn-sm btn-success float-end">Buy</button></a>
+        <button type="button" class="btn btn-primary btn-sm float-end mx-1" data-bs-toggle="modal" data-bs-target="#m_package{{ module.data.package.id }}">Info</button>
     </div>
 </div>
 
@@ -24,15 +19,15 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                {{ module.data.package.name }} <small>({{ cart.currency.symbol ?? store.currency.symbol }}{{ module.data.package.price|number_format(2) }} {% if module.data.package.originalPrice != module.data.package.price %} <del class="text-danger">{{ module.data.package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 ?? store.currency.iso4217 }})</small></h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">{{ module.data.package.name }} <small>({{ cart.currency.symbol }}{{ module.data.package.price|number_format(2) }} {% if module.data.package.originalPrice != module.data.package.price %} <del class="text-danger">{{ module.data.package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }})</small></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {{ module.data.package.content | raw }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a href="/package/{{ module.data.package.id }}"><button type="button" class="btn btn-primary">Add to cart</button></a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/package/{{ module.data.package.id }}"><button type="button" class="btn btn-success">Buy</button></a>
             </div>
         </div>
     </div>

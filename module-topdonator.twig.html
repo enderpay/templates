@@ -3,7 +3,7 @@
         {{ module.name }}
     </div>
     <div class="card-body">
-        <img class="mx-auto d-block" height="200px" src="https://mc-heads.net/body/{{ module.data.uuid }}.png" alt="{{ module.data.uuid }}">
+        <img class="mx-auto d-block" height="200px" src="https://mc-heads.net/body/{{ module.data.uuid }}.png" alt="{{ module.data.uuid }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ module.data.username }}">
     </div>
     <div class="card-footer">
         {{ module.data.username }} ({{ store.currency.symbol }}{{ module.data.total|number_format(2) }} {{ store.currency.iso4217 }})

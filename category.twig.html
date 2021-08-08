@@ -8,14 +8,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">{{ package.name }} <small>({{ cart.currency.symbol }}{{ package.price|number_format(2) }} {% if package.originalPrice != package.price %} <del class="text-danger">{{ package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }})</small></h5>
-                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 {{ package.content | raw }}
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <a href="/package/{{ package.id }}"><button type="button" class="btn btn-primary">Add to cart</button></a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="/package/{{ package.id }}"><button type="button" class="btn btn-success">Buy</button></a>
             </div>
         </div>
     </div>
@@ -35,15 +35,16 @@
                 <div class="card shadow">
                     <div class="card-header p-2 bg-primary text-light text-center">
                         {{ package.name }}
+                        <small class="d-block text-center">{{ cart.currency.symbol }}{{ package.price|number_format(2) }} {% if package.originalPrice != package.price %} <del class="text-danger">{{ package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }}</small>
                     </div>
                     <div class="card-body">
                         {% if package.imageUrl %}
-                        <img class="container-fluid" src="{{ package.imageUrl }}" alt="{{ package.name }}">
+                        <img class="container-fluid" src="{{ package.imageUrl }}" alt="{{ package.name }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ package.name }}">
                         {% endif %}
                     </div>
                     <div class="card-footer p-2">
-                        <p class="mb-1 text-center">{{ cart.currency.symbol }}{{ package.price|number_format(2) }} {% if package.originalPrice != package.price %} <del class="text-danger">{{ package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }}</p>
-                        <button type="button" class="btn btn-secondary btn-sm container-fluid" data-toggle="modal" data-target="#package{{ package.id }}">Info</button>
+                        <a href="/package/{{ package.id }}"><button type="button" class="btn btn-sm btn-success float-end">Buy</button></a>
+                        <button type="button" class="btn btn-primary btn-sm float-end mx-1" data-bs-toggle="modal" data-bs-target="#package{{ package.id }}">Info</button>
                     </div>
                 </div>
             </div>
@@ -57,7 +58,7 @@
             <tr>
                 <td class="align-middle" style="width: 50%">{{ package.name }}</td>
                 <td class="align-middle" style="width: 30%">{{ cart.currency.symbol }}{{ package.price|number_format(2) }} {% if package.originalPrice != package.price %} <del class="text-danger">{{ package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }}</td>
-                <td class="align-middle" style="width: 20%"><button type="button" class="btn btn-secondary btn-sm container-fluid" data-toggle="modal" data-target="#package{{ package.id }}">Info</button></td>
+                <td class="align-middle" style="width: 20%"><button type="button" class="btn btn-primary btn-sm container-fluid" data-bs-toggle="modal" data-bs-target="#package{{ package.id }}">Info</button></td>
             </tr>
             {% endfor %}
             </tbody>
