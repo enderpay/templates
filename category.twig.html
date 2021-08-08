@@ -1,7 +1,7 @@
 {% extends "base.twig.html" %}
 {% block title %} {{ category.name }} {% endblock title %}
 {% block content %}
-{% for package in packages %}
+{% for package in category.packages %}
 <!-- Package Modal -->
 <div class="modal fade" id="package{{ package.id }}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -30,7 +30,7 @@
         {{ category.content | raw }}
         {% if category.viewMode == 'GRID' %}
         <div class="row row-cols-1 row-cols-md-3">
-            {% for package in packages %}
+            {% for package in category.packages %}
             <div class="col mb-4">
                 <div class="card shadow">
                     <div class="card-header p-2 bg-primary text-light text-center">
@@ -54,7 +54,7 @@
         {% if category.viewMode == 'LIST' %}
         <table class="table table-borderless table-striped table-hover thead-dark">
             <tbody>
-            {% for package in packages %}
+            {% for package in category.packages %}
             <tr>
                 <td class="align-middle" style="width: 50%">{{ package.name }}</td>
                 <td class="align-middle" style="width: 30%">{{ cart.currency.symbol }}{{ package.price|number_format(2) }} {% if package.originalPrice != package.price %} <del class="text-danger">{{ package.originalPrice|number_format(2) }}</del> {% endif %} {{ cart.currency.iso4217 }}</td>
