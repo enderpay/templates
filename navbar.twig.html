@@ -8,7 +8,7 @@
             {% for category in store.categories %}
             {% if category.children %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/category/{{ category.slug }}/" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ category.name }}</a>
+                <a class="nav-link dropdown-toggle" href="/{{ category.slug }}" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ category.name }}</a>
                 <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 37px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
                     {% for child in category.children %}
                     <a class="dropdown-item" href="/{{ child.slug }}">{{ child.name }}</a>
