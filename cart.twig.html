@@ -54,8 +54,7 @@
                     <button class="btn btn-primary" type="submit">Apply</button>
                 </div>
             </form>
-            <p class="mb-0">PROCESSING FEE: {{ cart.currency.symbol }}{{ cart.processingFee|number_format(2) }} {{ cart.currency.iso4217 }}</p>
-            <p class="mb-0">GRAND TOTAL: {{ cart.currency.symbol }}{{ cart.grandTotal|number_format(2) }} {{ cart.currency.iso4217 }}</p>
+            <p class="mb-0">Grand Total: {{ cart.currency.symbol }}{{ cart.grandTotal|number_format(2) }} {{ cart.currency.iso4217 }}</p>
             {% else %}
             <p>Your cart is currently empty.</p>
             {% endif %}
