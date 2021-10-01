@@ -71,6 +71,9 @@
                 {% if module.type == 'DONATION_GOAL' %}
                 {% include 'module-donationgoal.twig.html' %}
                 {% endif %}
+                {% if module.type == 'ONLINE_PLAYERS' %}
+                {% include 'module-onlineplayers.twig.html' %}
+                {% endif %}
                 {% endfor %}
             </div>
             {% endif %}
